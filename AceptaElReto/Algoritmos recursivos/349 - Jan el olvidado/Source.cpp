@@ -1,12 +1,14 @@
 // Esquema de la entrada: número de casos
 #include <iostream>
+#include <string>
 using namespace std;
 
 void casoDePrueba() {
 
-    // TU CÓDIGO AQUÍ
-    // Procesa un único caso.
-    // Evita el uso de endl.
+    string operacion;
+    getline(cin, operacion);
+
+
 
 } // casoDePrueba
 
