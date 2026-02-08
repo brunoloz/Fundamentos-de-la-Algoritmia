@@ -2,11 +2,26 @@
 #include <iostream>
 using namespace std;
 
-int balanceado(int pi, int di, int pd, int dd) {
+int balanceado(int pi, int di, int pd, int dd, int peso_acu) {
 
-    int izquierdo;
-    if(pi == 0)
-        izquierdo = balanceado
+
+    if (pi == 0) {
+        cin >> pi >> di >> pd >> dd;
+        return balanceado(pi, di, pd, dd, peso_acu);
+    }
+    else {
+
+        if (pd == 0) {
+            cin >> pi >> di >> pd >> dd;
+            return balanceado(pi, di, pd, dd, peso_acu);
+        }
+        else {
+            peso_acu = pi * di + pd * dd;
+            return balanceado(pi, di, pd, dd, peso_acu);
+
+        }
+
+    }
 
 }
 
@@ -23,6 +38,9 @@ bool casoDePrueba() {
             // CÓDIGO PRINCIPAL AQUÍ
             // Procesa un único caso.
             // Evita el uso de endl.
+            if (balanceado(pi, di, pd, dd, 0) == 0) cout << "SI";
+            else cout << "NO";
+            cout << '\n';
 
             return true;
         }
