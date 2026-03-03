@@ -9,7 +9,42 @@
 using namespace std;
 
 // función que resuelve el problema
-bool interesante(long long int n, int suma_izq, int suma_der) {
+
+struct tSol {
+
+    int suma_izq;
+    bool interesante;
+
+};
+
+//P:{ n > 0 }
+tSol interesante(int n, int suma_der) {
+
+    if (n < 10) {
+
+        if (n != 0 && suma_der % n == 0) return { n, true };
+        else return  { 0, false };
+
+    }
+    else {
+
+        if (n % 10 == 0 || suma_der % (n % 10) != 0) return { 0, false };
+        else {
+
+            tSol s = interesante(n / 10, suma_der + n % 10);
+
+            if (s.suma_izq % (n % 10) == 0 && s.interesante) return { s.suma_izq + n % 10, true };
+            else return{ 0,false };
+
+        }
+
+    }
+
+}
+
+/*
+
+bool interesante(long long int n, int suma_total, int suma_der) {
 
     if (n == 0) return true;
 
@@ -17,9 +52,11 @@ bool interesante(long long int n, int suma_izq, int suma_der) {
 
     if (digit == 0) return false;
 
-    if (!((suma_izq - digit) % digit == 0) || !(suma_der % digit == 0)) return false;
+    int suma_izq = suma_total - suma_der - digit;
 
-    return interesante(n / 10, suma_izq - digit, suma_der + digit);
+    if (!(suma_izq % digit == 0) || !(suma_der % digit == 0)) return false;
+
+    return interesante(n / 10, suma_total, suma_der + digit);
 
 }
 
@@ -31,6 +68,8 @@ int valorSuma(long long int n) {
 
 }
 
+*/
+
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
@@ -39,12 +78,11 @@ void resuelveCaso() {
     long long int n;
     cin >> n;
 
-    int suma = valorSuma(n);
 
-    bool sol = interesante(n, suma, 0);
+    tSol sol = interesante(n, 0);
 
     // escribir sol
-    if (sol) cout << "SI";
+    if (sol.interesante) cout << "SI";
     else cout << "NO";
     cout << '\n';
 

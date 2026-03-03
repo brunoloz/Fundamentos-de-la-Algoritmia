@@ -22,14 +22,11 @@ int recursionFinal(int n1, int n2, int suma_acu, int d) {
 
 }
 
-int recursionNoFinal(int n1, int n2, int suma_acu, int d) {
+int recursionNoFinal(int n1, int n2) {
 
     if (n1 == 0 && n2 == 0) return 0;
 
-    int dig = (n1 + n2) % 10;
-    suma_acu = dig * d;
-
-    return suma_acu + recursionNoFinal(n1 / 10, n2 / 10, suma_acu, d * 10);
+    return recursionNoFinal(n1 / 10, n2 / 10) * 10 + (n1 + n2) % 10;
 
 }
 
@@ -42,7 +39,7 @@ void resuelveCaso() {
     cin >> n1 >> n2;
 
     int sol = recursionFinal(n1, n2, 0, 1);
-    int sol_nofinal = recursionNoFinal(n1, n2, 0, 1);
+    int sol_nofinal = recursionNoFinal(n1, n2);
     // escribir sol
     cout << sol << " " << sol_nofinal << '\n';
 

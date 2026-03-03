@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos recursivos\Eje08 - Quebrada\Source.cpp(42): warning C4715: 'pos_der': no todas las rutas de acceso de control devuelven un valor
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos recursivos\Eje08 - Quebrada\Source.cpp(28): warning C4715: 'pos_izq': no todas las rutas de acceso de control devuelven un valor
+  Eje08 - Quebrada.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos recursivos\Eje08 - Quebrada\x64\Debug\Eje08 - Quebrada.exe
