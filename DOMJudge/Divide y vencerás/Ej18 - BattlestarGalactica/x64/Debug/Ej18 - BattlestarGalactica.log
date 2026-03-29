@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Divide y vencerás\Ej18 - BattlestarGalactica\Source.cpp(33,36): warning C4267: '+=': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Ej18 - BattlestarGalactica.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Divide y vencerás\Ej18 - BattlestarGalactica\x64\Debug\Ej18 - BattlestarGalactica.exe

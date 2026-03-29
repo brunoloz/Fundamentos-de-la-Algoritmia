@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Divide y vencerás\Ej21 - ElementoMayoritario\Source.cpp(74,42): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Divide y vencerás\Ej21 - ElementoMayoritario\Source.cpp(54): warning C4715: 'resolver': no todas las rutas de acceso de control devuelven un valor
+  Ej21 - ElementoMayoritario.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Divide y vencerás\Ej21 - ElementoMayoritario\x64\Debug\Ej21 - ElementoMayoritario.exe
