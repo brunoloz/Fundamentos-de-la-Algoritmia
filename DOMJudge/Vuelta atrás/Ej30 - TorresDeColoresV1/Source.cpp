@@ -18,7 +18,8 @@ struct Datos {
 
 };
 
-bool esValida(vector<char> const& sol, int k) {
+/*
+    bool esValida(vector<char> const& sol, int k) {
 
     char letra = sol[k];
 
@@ -30,7 +31,7 @@ bool esValida(vector<char> const& sol, int k) {
 
     return true;
 
-}
+}*/
 
 // función que resuelve el problema
 void resolver(Datos const& datos, int k, vector<string>& sol) {

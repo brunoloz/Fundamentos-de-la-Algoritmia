@@ -9,7 +9,6 @@
 
 using namespace std;
 
-const vector<char> abecedario = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o','p','q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
 struct Datos {
 
@@ -19,7 +18,7 @@ struct Datos {
 
 };
 
-bool esValida(vector<char> const& sol, int k) {
+/*bool esValida(vector<char> const& sol, int k) {
 
     char letra = sol[k];
 
@@ -31,18 +30,20 @@ bool esValida(vector<char> const& sol, int k) {
 
     return true;
 
-}
+}*/
 
 // función que resuelve el problema
-void resolver(Datos const& datos, int k, vector<char>& sol) {
+void resolver(Datos const& datos, int k, vector<char>& sol, vector<bool>& marcas) {
 
-    for (int i = 0; i < datos.n; i++) {
+    for (int i = 'a'; i < 'a' + datos.m; i++) {
 
-        sol[k] = abecedario[i];
+        sol[k] = i;
 
-        if (esValida(sol, k)) {
+        if (!marcas[i - 'a']) {
 
-            if (k == datos.m - 1) {
+            marcas[i - 'a'] = true;
+
+            if (k == datos.n - 1) {
 
                 for (int i = 0; i < sol.size(); i++) {
 
@@ -55,9 +56,11 @@ void resolver(Datos const& datos, int k, vector<char>& sol) {
             }
             else {
 
-                resolver(datos, k + 1, sol);
+                resolver(datos, k + 1, sol, marcas);
 
             }
+
+            marcas[i - 'a'] = false;
 
         }
 
@@ -70,17 +73,14 @@ void resolver(Datos const& datos, int k, vector<char>& sol) {
 bool resuelveCaso() {
     // leer los datos de la entrada
     Datos datos;
-    cin >> datos.n >> datos.m;
+    cin >> datos.m >> datos.n;
     if (!std::cin)
         return false;
 
-    vector<int> letras;
-    for (int i = 0; i < datos.n; i++) {
-        datos.letras.push_back(abecedario[i]);
-    }
-
-    vector<char> sol(datos.m, 0);
-    resolver(datos, 0, sol);
+    vector<bool> marcas(datos.m, false);
+    vector<char> sol(datos.n, 0);
+    
+    resolver(datos, 0, sol, marcas);
 
     // escribir sol
 

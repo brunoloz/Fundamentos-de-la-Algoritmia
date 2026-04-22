@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Vuelta atrás\Ej48 - ApartamentoConVistas\Source.cpp(25,33): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Ej48 - ApartamentoConVistas.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Vuelta atrás\Ej48 - ApartamentoConVistas\x64\Debug\Ej48 - ApartamentoConVistas.exe
