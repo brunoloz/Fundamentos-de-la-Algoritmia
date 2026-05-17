@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej51 - Segmento Sin Tres Crecientes\Source.cpp(17,31): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej51 - Segmento Sin Tres Crecientes\Source.cpp(19,45): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Ej51 - Segmento Sin Tres Crecientes.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej51 - Segmento Sin Tres Crecientes\x64\Debug\Ej51 - Segmento Sin Tres Crecientes.exe
