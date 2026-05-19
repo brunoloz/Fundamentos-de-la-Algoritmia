@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Vuelta atrás\Ej37 - Sumas Restas\Source.cpp(30,35): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Vuelta atrás\Ej37 - Sumas Restas\Source.cpp(95,9): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Ej37 - Sumas Restas.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Vuelta atrás\Ej37 - Sumas Restas\x64\Debug\Ej37 - Sumas Restas.exe
