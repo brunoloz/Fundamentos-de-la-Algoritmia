@@ -1,4 +1,4 @@
-﻿// Nombre del alumno  Bruno Lozano Clemente
+﻿// Nombre del alumno ..... Bruno Lozano Clemente
 // Usuario del Juez ...... FAL-J19
 
 
@@ -9,118 +9,72 @@
 
 using namespace std;
 
-struct Resultado {
 
-    bool posible;
-    int max_sat;
-    int num_comb;
+/*
+
+    El árbol de exploración tiene una profundidad de m, siendo m el número de puestos disponibles en el banquete.
+    Cada nodo representa el puesto del banquete. Cada rama representa una de las opciones posibles para ese puesto.
+
+    El vector solucion es un array de tipo booleano y de tamaño n, siendo n el numero de habitantes del reino.
+    La posición i es true si el habitante i acude al banquete y false si no acude.
+
+*/
+
+struct tDatos {
+
+    int n;
+    int m;
+    int hada;
+    vector<vector<int>> matriz;
 
 };
 
-/*
-
-    El vector solución sol_parcial es un array de tamaño m.
-
-    El indice representa el número de asiento que estamos asignando en el paso actual. Toma valores desde 0 hasta m - 1.
-
-    En el vector se guarda el identificador del habitante (un valor entre 0 y n - 1) que ha sido asignado a sentarse en el asiento 'k'.
+// función que resuelve el problema
+void resolver(tDatos const& datos, int k, int sat_actual, int& sat_mejor, int cont, vector<bool>& sol, bool& posible, int& comb, vector<int> const& acum) {
 
 
-*/
+    for (int i = 0; i < datos.n; i++) {
 
-/*
+        if (i == k) cont++;
 
-    Cada nodo del arbol de exploracion representa un estado de la asignación parcial del banquete hasta el asiento 'k'.
-    La altura máxima es m o m+1 si contamos el nivel de la raíz como nivel 0.
-    En el nivel 0 hay 1 nodo (raíz).
-    En el nivel 1 hay n nodos. 
-    En el nivel 2 hay n*(n-1) nodos.
+        if (!sol[i] && datos.matriz[k][i] >= 0 && (cont <= (datos.m / 3))) { //si la sat en ese puesto no es negativa y no se supera la superstición
 
-*/
+            sat_actual += datos.matriz[k][i];
+            sol[i] = true;
 
-void resolverAux(int n, int m, int hada, vector<vector<int>> const& matriz, int k, int sat_actual, int supersticion, vector<bool>& visitado, vector<int>& sol_parcial,
-    vector<int>& acum_max, Resultado& sol) {
+            if (k == datos.m - 1) {
 
-    if (sat_actual + acum_max[k] < sol.max_sat) return;
+                if (sol[datos.hada]) {
 
-    //caso base
-    if (k == m) {
-        if (!visitado[hada]) return; // el hada debe estar invitada
+                    if (sat_actual > sat_mejor) {
 
-        if (sat_actual > sol.max_sat) {
-            sol.max_sat = sat_actual;
-            sol.num_comb = 1;
-            sol.posible = true;
-        }
-        else if (sat_actual == sol.max_sat) {
-            sol.num_comb++;
-        }
-        return;
-    }
+                        sat_mejor = sat_actual;
+                        comb = 1;
 
-    for (int i = 0; i < n; i++) {
+                    }
+                    else if (sat_actual == sat_mejor) comb++;
 
-        if (visitado[hada] || (m - k) != 1 || i == hada) { // si hada esta invitada || no estamos en el ult asiento || si estamos evaluando el hada
-
-            if (!visitado[i] && matriz[k][i] >= 0) {
-
-                // calculamos si este habitante en este asiento suma a la superstición
-                int sig_supersticion;
-                if (i == k) sig_supersticion = supersticion + 1;
-                else sig_supersticion = supersticion;
-
-                // comprobamos la restricción del límite de supersticiosos (m/3)
-                if (sig_supersticion <= m / 3) {
-
-                    //marcaje
-                    visitado[i] = true;
-                    sol_parcial[k] = i; // guardamos en el vector solución
-
-
-                    resolverAux(n, m, hada, matriz, k + 1, sat_actual + matriz[k][i], sig_supersticion, visitado, sol_parcial, acum_max, sol);
-
-                    visitado[i] = false;
+                    posible = true;
                 }
+
+            }
+            else {
+
+                if (acum[k + 1] + sat_actual >= sat_mejor)
+                    resolver(datos, k + 1, sat_actual, sat_mejor, cont, sol, posible, comb, acum);
+
             }
 
-        }
-
-    }
-
-}
-
-// función que resuelve el problema
-Resultado resolver(int n, int m, int hada, vector<vector<int>> const& matriz) {
-
-    Resultado sol = { false, -1, 0 };
-    vector<bool> visitados(n, false);
-    vector<int> sol_parcial(m, -1);
-
-    vector<int> maximos(m, 0); //para guardar los maximos por fila
-    for (int i = 0; i < m; i++) {
-
-        int maximo = -1;
-
-        for (int j = 0; j < n; j++) {
-
-            if (matriz[i][j] > maximo) 
-                maximo = matriz[i][j]; 
+            sat_actual -= datos.matriz[k][i];
+            sol[i] = false;
 
         }
 
-        if (maximo > 0) maximos[i] = maximo;
-        else maximo = 0;
+        if (i == k) cont--;
+
 
     }
 
-    vector<int> acum_max(m + 1, 0); //para la suma de las maximas satisfacciones
-    for (int i = m - 1; i >= 0; --i) {
-        acum_max[i] = acum_max[i + 1] + maximos[i];
-    }
-
-    resolverAux(n, m, hada, matriz, 0, 0, 0, visitados, sol_parcial, acum_max, sol);
-
-    return sol;
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
@@ -128,34 +82,57 @@ Resultado resolver(int n, int m, int hada, vector<vector<int>> const& matriz) {
 bool resuelveCaso() {
     // leer los datos de la entrada
 
-    int n;
-    cin >> n;
+    tDatos datos;
+    cin >> datos.n;
 
-    if (n== 0)
+    if (datos.n == 0)
         return false;
 
-    int m, hada;
-    cin >> m >> hada;
+    cin >> datos.m >> datos.hada;
 
-    vector<vector<int>> matriz;
+    vector<int> maximos(datos.m, 0);
+    int max = -100000;
 
-    for (int i = 0; i < m; ++i) {
-        vector<int> fila(n); 
-        for (int j = 0; j < n; ++j) {
-            cin >> fila[j]; 
+    for (int i = 0; i < datos.m; i++) {
+
+        vector<int> fila;
+
+        for (int j = 0; j < datos.n; j++) {
+
+            int a;
+            cin >> a;
+            fila.push_back(a);
+            if (a > max) max = a;
+
         }
-        matriz.push_back(fila); 
+        maximos[i] = max;
+        datos.matriz.push_back(fila);
+
     }
 
-    Resultado sol = resolver(n, m, hada, matriz);
+    vector<int> acum(datos.m + 1, 0);
+    for (int i = datos.m - 1; i >= 0; i--) {
+
+        acum[i] = acum[i + 1] + maximos[i];
+
+    }
+
+    int sat_mejor = -1;
+    bool posible = false;
+    vector<bool> sol(datos.n, false);
+    int comb = 1;
+
+    resolver(datos, 0, 0, sat_mejor, 0, sol, posible, comb, acum);
 
     // escribir sol
-    if (sol.posible) {
-        cout << sol.max_sat << " " << sol.num_comb << "\n";
-    }
+    if (!posible) cout << "No";
     else {
-        std::cout << "No\n";
+
+        cout << sat_mejor << " " << comb;
+
     }
+
+    cout << '\n';
 
     return true;
 

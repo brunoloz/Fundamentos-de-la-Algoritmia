@@ -1,0 +1,13 @@
+﻿  Source.cpp
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej58 -  Segmento Más Corto\Source.cpp(20,32): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej58 -  Segmento Más Corto\Source.cpp(25,21): warning C4805: '==': combinación no segura del tipo 'const _Ty' y el tipo 'bool' en la operación
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej58 -  Segmento Más Corto\Source.cpp(31,27): warning C4805: '==': combinación no segura del tipo 'const _Ty' y el tipo 'bool' en la operación
+          with
+          [
+              _Ty=int
+          ]
+  Ej58 -  Segmento Más Corto.vcxproj -> C:\Users\lucas\OneDrive\Documentos\GitHub\Fundamentos-de-la-Algoritmia\DOMJudge\Algoritmos iterativos\Ej58 -  Segmento Más Corto\x64\Debug\Ej58 -  Segmento Más Corto.exe
